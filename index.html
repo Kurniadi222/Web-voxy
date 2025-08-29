@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoxyStore - Blox Fruits</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0b0c10;
+      color: #ecf0f1;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(90deg, #f39c12, #e74c3c);
+      padding: 25px 15px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    header h1 { margin: 0; font-size: 28px; font-weight: bold; }
+    header p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; }
+    .menu-btn {
+      position: absolute; left: 15px; top: 20px;
+      cursor: pointer; width: 30px; height: 22px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      z-index: 2001;
+    }
+    .menu-btn div { height: 4px; background: #fff; border-radius: 2px; }
+    nav { position: fixed; left: -250px; top: 0; width: 220px; height: 100%; background: #111;
+      padding-top: 60px; transition: left 0.3s ease; z-index: 2000; }
+    nav.active { left: 0; }
+    nav ul { list-style: none; padding: 0; margin: 0; }
+    nav ul li { border-bottom: 1px solid #222; }
+    nav ul li a { display: block; padding: 14px 20px; color: #ecf0f1; text-decoration: none; }
+    nav ul li a:hover { background: #f39c12; color: #111; }
+    .close-btn { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; color: #fff; }
+    section { padding: 30px 20px; max-width: 1100px; margin: auto; }
+    h2 { color: #f39c12; font-size: 22px; margin-top: 40px; margin-bottom: 15px; border-left: 5px solid #f39c12; padding-left: 10px; }
+    .card {
+      background: #1a1a1d; border-radius: 10px; padding: 18px; margin: 10px 0;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+      display: flex; justify-content: space-between; align-items: center;
+      transition: 0.2s; cursor: pointer;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.6); }
+    .card span { font-weight: bold; color: #f1c40f; }
+    footer { background: #111; text-align: center; padding: 18px; margin-top: 30px; font-size: 14px; color: #aaa; }
+    .modal {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.6);
+      justify-content: center; align-items: center; z-index: 3000;
+    }
+    .modal-content {
+      background: #1a1a1d; padding: 20px; border-radius: 10px; text-align: center;
+      max-width: 300px; width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    }
+    .modal-content h3 { margin: 0 0 10px; color: #f39c12; }
+    .modal-content button {
+      margin-top: 15px; padding: 8px 16px;
+      background: #f39c12; border: none; color: #111; border-radius: 6px; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="menu-btn" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+    <h1>VOXYSTORE - BLOX FRUITS</h1>
+    <p>Selamat datang 🎉 Kami menjual Fruit, jasa Joki & Gendong 🔥</p>
+  </header>
+
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <span class="close-btn" onclick="toggleMenu()">✕</span>
+    <ul>
+      <li><a href="#joki-level" onclick="toggleMenu()">Joki Level</a></li>
+      <li><a href="#joki-raid" onclick="toggleMenu()">Joki Raid</a></li>
+      <li><a href="#joki-belly" onclick="toggleMenu()">Joki Belly</a></li>
+      <li><a href="#joki-trial" onclick="toggleMenu()">Joki Trial</a></li>
+      <li><a href="#race" onclick="toggleMenu()">Race</a></li>
+      <li><a href="#mastry" onclick="toggleMenu()">Mastry</a></li>
+      <li><a href="#fruit" onclick="toggleMenu()">Sell Fruit</a></li>
+      <li><a href="#fstyle" onclick="toggleMenu()">Fighting Style</a></li>
+      <li><a href="#payment" onclick="toggleMenu()">Pembayaran</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">Hubungi Kami</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sections -->
+  <section id="joki-level">
+    <h2>JOKI LEVEL 🆙</h2>
+    <div class="card" onclick="openModal('Sea 1 - 100 Level','Rp 7.000')">Sea 1 100 Level <span>Rp 7.000</span></div>
+    <div class="card" onclick="openModal('Sea 2 - 100 Level','Rp 5.000')">Sea 2 100 Level <span>Rp 5.000</span></div>
+    <div class="card" onclick="openModal('Sea 3 - 100 Level','Rp 3.000')">Sea 3 100 Level <span>Rp 3.000</span></div>
+  </section>
+
+  <section id="joki-raid">
+    <h2>JOKI RAID 🚀</h2>
+    <div class="card" onclick="openModal('Raid Normal','Rp 1.000')">Raid Normal <span>Rp 1.000</span></div>
+    <div class="card" onclick="openModal('Raid Advanced','Rp 3.000')">Raid Advanced <span>Rp 3.000</span></div>
+    <div class="card" onclick="openModal('Raid Advanced FW','Rp 12.000')">Raid Advanced FW <span>Rp 12.000</span></div>
+  </section>
+
+  <section id="joki-belly">
+    <h2>JOKI BELLY 💸</h2>
+    <div class="card" onclick="openModal('1 Juta Belly','Rp 1.000')">1 Juta Belly <span>Rp 1.000</span></div>
+  </section>
+
+  <section id="joki-trial">
+    <h2>JOKI TRIAL 🔥</h2>
+    <div class="card" onclick="openModal('Trial Gendong','Rp 5.000')">Trial Gendong <span>Rp 5.000</span></div>
+    <div class="card" onclick="openModal('Trial Joki','Rp 10.000')">Trial Joki <span>Rp 10.000</span></div>
+  </section>
+
+  <section id="race">
+    <h2>RACE 🐉</h2>
+    <div class="card" onclick="openModal('Ghoul','Rp 15.000')">Ghoul <span>Rp 15.000</span></div>
+    <div class="card" onclick="openModal('Cyborg','Rp 14.000')">Cyborg <span>Rp 14.000</span></div>
+    <div class="card" onclick="openModal('Draco','Rp 19.000')">Draco <span>Rp 19.000</span></div>
+    <div class="card" onclick="openModal('V3 Race (sudah V2)','Rp 6.000')">V3 Race (sudah V2) <span>Rp 6.000</span></div>
+  </section>
+
+  <section id="mastry">
+    <h2>ALL MASTRY 📖</h2>
+    <div class="card" onclick="openModal('All Mastry 100','Rp 5.000')">All Mastry 100 <span>Rp 5.000</span></div>
+  </section>
+
+  <section id="fruit">
+    <h2>SELL FRUIT 🍋</h2>
+    <div class="card" onclick="openModal('Gas','Rp 15.000')">Gas <span>Rp 15.000</span></div>
+    <div class="card" onclick="openModal('Gravity','Rp 10.000')">Gravity <span>Rp 10.000</span></div>
+    <div class="card" onclick="openModal('T-rex','Rp 8.000')">T-rex <span>Rp 8.000</span></div>
+    <div class="card" onclick="openModal('Venom','Rp 5.000')">Venom <span>Rp 5.000</span></div>
+    <div class="card" onclick="openModal('Spirit','Rp 4.000')">Spirit <span>Rp 4.000</span></div>
+    <div class="card" onclick="openModal('Control','Rp 4.000')">Control <span>Rp 4.000</span></div>
+  </section>
+
+  <section id="fstyle">
+    <h2>FIGHTING STYLE 🥊</h2>
+    <div class="card" onclick="openModal('God Human','Rp 35.000')">God Human <span>Rp 35.000</span></div>
+    <div class="card" onclick="openModal('Superhuman','Rp 17.000')">Superhuman <span>Rp 17.000</span></div>
+    <div class="card" onclick="openModal('Electric Claw','Rp 15.000')">Electric Claw <span>Rp 15.000</span></div>
+    <div class="card" onclick="openModal('Sanguine Art','Rp 30.000')">Sanguine Art <span>Rp 30.000</span></div>
+    <div class="card" onclick="openModal('Deathstep','Rp 15.000')">Deathstep <span>Rp 15.000</span></div>
+    <div class="card" onclick="openModal('Dragon Talon','Rp 15.000')">Dragon Talon <span>Rp 15.000</span></div>
+  </section>
+
+  <section id="payment">
+    <h2>PEMBAYARAN 💸</h2>
+    <div class="card">Gopay <span>083875503132</span></div>
+    <div class="card">Ovo <span>083875503132</span></div>
+    <div class="card">Dana <span>083875503132</span></div>
+    <div class="card">Qris <span>Minta ke Admin</span></div>
+  </section>
+
+  <section id="contact">
+    <h2>HUBUNGI KAMI 📱</h2>
+    <div class="card"><a href="https://wa.me/6283875503132" target="_blank">WhatsApp Admin 1</a></div>
+    <div class="card"><a href="https://wa.me/6283142091364" target="_blank">WhatsApp Admin 2</a></div>
+    <div class="card"><a href="https://whatsapp.com/channel/0029VasMKqG9Bb5wfYsLGq2S" target="_blank">Channel WhatsApp</a></div>
+  </section>
+
+  <footer>© 2025 VoxyStore - All Rights Reserved</footer>
+
+  <!-- Modal -->
+  <div class="modal" id="fruitModal">
+    <div class="modal-content">
+      <h3 id="fruitName">Nama Item</h3>
+      <p id="fruitPrice">Harga</p>
+      <button onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+    function openModal(name, price) {
+      document.getElementById("fruitName").innerText = name;
+      document.getElementById("fruitPrice").innerText = "Harga: " + price;
+      document.getElementById("fruitModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("fruitModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
